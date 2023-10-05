@@ -58,8 +58,4 @@ export const getStaticProps: GetStaticProps<ArticlesProps> = async (_) => {
   };
 };
 
-<<<<<<< Updated upstream
 export default Articles;
-=======
-export default Articles;
->>>>>>> Stashed changes
