@@ -51,8 +51,4 @@ const articles =
       evidence: "weak against",
     },
 ];
-<<<<<<< Updated upstream
   module.exports = articles;
-=======
-  module.exports = articles;
->>>>>>> Stashed changes
