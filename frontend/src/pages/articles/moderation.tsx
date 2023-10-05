@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Book, ApiResponse } from './types';
+import { Book, ApiResponse } from '../utils/types';
 
 const BookSearch: React.FC = () => {
   const [title, setTitle] = useState<string>('');
