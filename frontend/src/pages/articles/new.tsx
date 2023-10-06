@@ -60,6 +60,7 @@ const NewDiscussion = () => {
           onChange={(event) => {
             setTitle(event.target.value);
           }}
+          required
         />
 
         <label htmlFor="author">Authors:</label>
@@ -72,6 +73,7 @@ const NewDiscussion = () => {
                 value={author}
                 onChange={(event) => changeAuthor(index, event.target.value)}
                 className={formStyles.formItem}
+                required
               />
               <button
                 onClick={() => removeAuthor(index)}
@@ -103,6 +105,7 @@ const NewDiscussion = () => {
           onChange={(event) => {
             setSource(event.target.value);
           }}
+          required
         />
 
         <label htmlFor="pubYear">Publication Year:</label>
@@ -120,6 +123,7 @@ const NewDiscussion = () => {
               setPubYear(parseInt(val));
             }
           }}
+          required
         />
 
         <label htmlFor="doi">DOI:</label>
@@ -132,6 +136,7 @@ const NewDiscussion = () => {
           onChange={(event) => {
             setDoi(event.target.value);
           }}
+          required
         />
 
         <label htmlFor="summary">Summary:</label>
@@ -140,6 +145,7 @@ const NewDiscussion = () => {
           name="summary"
           value={summary}
           onChange={(event) => setSummary(event.target.value)}
+          required
         />
 
         <button className={formStyles.formItem} type="submit">
