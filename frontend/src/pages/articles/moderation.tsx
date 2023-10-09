@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Book, ApiResponse } from '../utils/types';
+import { Book, ApiResponse } from '../../utils/types';
 
 const BookSearch: React.FC = () => {
   const [title, setTitle] = useState<string>('');
@@ -10,7 +10,8 @@ const BookSearch: React.FC = () => {
 
   const searchBooks = async () => {
     try {
-      const response = await axios.get<ApiResponse>('http://localhost:3000/books/search', {
+      // 注意这里的URL更新为'/api/search'
+      const response = await axios.get<ApiResponse>('/api/search', {
         params: { title, author }
       });
 
