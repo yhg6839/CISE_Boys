@@ -1,6 +1,5 @@
 import { FormEvent, useState } from "react";
 import formStyles from "../../../styles/Form.module.scss";
-import axios from 'axios';
 
 const NewDiscussion = () => {
   const [successMessage, setSuccessMessage] = useState("");
@@ -14,7 +13,7 @@ const NewDiscussion = () => {
 
   const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     const formData = {
       title,
       authors,
@@ -24,13 +23,17 @@ const NewDiscussion = () => {
       summary,
       linked_discussion: linkedDiscussion,
     };
-  
+
     try {
-      // Make a POST request to your backend API endpoint
-      const response = await axios.post('/api/submit', formData);
-  
-      // Check if the submission was successful
-      if (response.status === 200) {
+      const response = await fetch('/api/submit', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.status === 201) {
         setSuccessMessage("Data has been successfully submitted!");
       } else {
         console.error("Submission failed");
@@ -38,8 +41,7 @@ const NewDiscussion = () => {
     } catch (error) {
       console.error("Error submitting data:", error);
     }
-  
-    // Reset the success message after a delay (optional)
+
     setTimeout(() => {
       setSuccessMessage("");
     }, 5000); // Reset after 5 seconds

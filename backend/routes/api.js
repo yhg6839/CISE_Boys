@@ -4,7 +4,7 @@ const router = express.Router();
 const Publication = require('../models/publication'); // Import your model
 
 // Define a route to handle form submissions
-router.post('/submit', async (req, res) => {
+router.post('/api/submit', async (req, res) => {
   try {
     // Extract data from the request body
     const {
