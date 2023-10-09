@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+.successMessage {
+  background-color: #4caf50; /* Green background color */
+  color: white; /* White text color */
+  padding: 10px; /* Padding for spacing */
+  margin-bottom: 20px; /* Margin to separate it from the form */
+}

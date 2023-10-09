@@ -1,7 +1,9 @@
 import { FormEvent, useState } from "react";
 import formStyles from "../../../styles/Form.module.scss";
+import axios from 'axios';
 
 const NewDiscussion = () => {
+  const [successMessage, setSuccessMessage] = useState("");
   const [title, setTitle] = useState("");
   const [authors, setAuthors] = useState<string[]>([]);
   const [source, setSource] = useState("");
@@ -12,18 +14,35 @@ const NewDiscussion = () => {
 
   const submitNewArticle = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    console.log(
-      JSON.stringify({
-        title,
-        authors,
-        source,
-        publication_year: pubYear,
-        doi,
-        summary,
-        linked_discussion: linkedDiscussion,
-      })
-    );
+  
+    const formData = {
+      title,
+      authors,
+      source,
+      publication_year: pubYear,
+      doi,
+      summary,
+      linked_discussion: linkedDiscussion,
+    };
+  
+    try {
+      // Make a POST request to your backend API endpoint
+      const response = await axios.post('/api/submit', formData);
+  
+      // Check if the submission was successful
+      if (response.status === 200) {
+        setSuccessMessage("Data has been successfully submitted!");
+      } else {
+        console.error("Submission failed");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
+  
+    // Reset the success message after a delay (optional)
+    setTimeout(() => {
+      setSuccessMessage("");
+    }, 5000); // Reset after 5 seconds
   };
 
   // Some helper methods for the authors array
@@ -49,6 +68,9 @@ const NewDiscussion = () => {
   return (
     <div className="container">
       <h1>New Article</h1>
+      {successMessage && (
+        <div className={formStyles.successMessage}>{successMessage}</div>
+      )}
       <form className={formStyles.form} onSubmit={submitNewArticle}>
         <label htmlFor="title">Title:</label>
         <input
