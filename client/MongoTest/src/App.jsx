@@ -2,38 +2,55 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
 function App() {
-  const [users, setUsers] = useState([])
+  const [articles, setArticles] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:3001/getUsers')
-    .then(users => setUsers(users.data))
+    axios.get('http://localhost:3001/getArticles')
+    .then(articles => setArticles(articles.data))
     .catch(err => console.log(err))
   }, [])
 
   return (
       <div className = "w-100 vh-100 d-flex justify-content-center align-items-center">
-        <div className = "w-50">
+        <div className = "w-100">
         <table className = "table">
           <thead>
             <tr>
               <th>
-                Name
+                Title
               </th>
               <th>
-                Email
+                Authors
               </th>
               <th>
-                Age
+                Source
+              </th>
+              <th>
+                Publication Year
+              </th>
+              <th>
+                DOI
+              </th>
+              <th>
+                Claim
+              </th>
+              <th>
+                Evidence
               </th>
             </tr>
           </thead>
           <tbody>
             {
-              users.map(user => {
+              articles.map(articles => {
                 return <tr>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.age}</td>
+                  <td>{articles.title}</td>
+                  <td>{articles.authors}</td>
+                  <td>{articles.source}</td>
+                  <td>{articles.pubyear}</td>
+                  <td>{articles.doi}</td>
+                  <td>{articles.claim}</td>
+                  <td>{articles.evidence}</td>
                 </tr>
               })
             }
