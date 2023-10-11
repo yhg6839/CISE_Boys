@@ -4,6 +4,9 @@ import axios from "axios";
 import "../app/viewarticle.css";
 
 function ViewArticle() {
+  const [filterBy, setFilterBy] = useState(""); // To track the selected filter option (evidence, claim, pubyear)
+  const [filterValue, setFilterValue] = useState(""); // To store the selected filter value
+
   const [articles, setArticles] = useState([]);
   useEffect(() => {
     axios
@@ -12,10 +15,72 @@ function ViewArticle() {
       .catch((err) => console.log(err));
   }, []);
 
+  const claimOptions = ["", "Code Quality Improvement", "Product Quality Improvement"];
+  const evidenceOptions = ["", "Strong Support", "Weak Support"];
+
+  const filteredArticles = articles.filter((article) => {
+    if (filterBy === "claim") {
+      return article.claim === filterValue;
+    }
+    if (filterBy === "evidence") {
+      return article.evidence === filterValue;
+    }
+    return true;
+  });
+
   return (
     <div className="view-article-container">
       <div className="view-article-content">
-      {/* <Link to="/">Go Back to Main</Link> */}
+        <label htmlFor="claimFilter">Filter by Claim:</label>
+        <select
+          name="claimFilter"
+          id="claimFilter"
+          value={filterBy === "claim" ? filterValue : ""}
+          onChange={(e) => {
+            setFilterBy("claim");
+            setFilterValue(e.target.value);
+          }}
+        >
+          {claimOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => {
+            setFilterBy("");
+            setFilterValue("");
+          }}
+        >
+          Clear Claim Filters
+        </button>
+
+        <label htmlFor="evidenceFilter">Filter by Evidence:</label>
+        <select
+          name="evidenceFilter"
+          id="evidenceFilter"
+          value={filterBy === "evidence" ? filterValue : ""}
+          onChange={(e) => {
+            setFilterBy("evidence");
+            setFilterValue(e.target.value);
+          }}
+        >
+          {evidenceOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+        <button
+          onClick={() => {
+            setFilterBy("");
+            setFilterValue("");
+          }}
+        >
+          Clear Evidence Filters
+        </button>
+
         <table className="table">
           <thead>
             <tr>
@@ -29,19 +94,17 @@ function ViewArticle() {
             </tr>
           </thead>
           <tbody>
-            {articles.map((articles) => {
-              return (
-                <tr>
-                  <td className="black-text">{articles.title}</td>
-                  <td className="black-text">{articles.authors}</td>
-                  <td className="black-text">{articles.source}</td>
-                  <td className="black-text">{articles.pubyear}</td>
-                  <td className="black-text">{articles.doi}</td>
-                  <td className="black-text">{articles.claim}</td>
-                  <td className="black-text">{articles.evidence}</td>
-                </tr>
-              );
-            })}
+            {filteredArticles.map((article) => (
+              <tr key={article.id}>
+                <td className="black-text">{article.title}</td>
+                <td className="black-text">{article.authors}</td>
+                <td className="black-text">{article.source}</td>
+                <td className="black-text">{article.pubyear}</td>
+                <td className="black-text">{article.doi}</td>
+                <td className="black-text">{article.claim}</td>
+                <td className="black-text">{article.evidence}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
