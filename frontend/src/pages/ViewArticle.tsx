@@ -1,64 +1,52 @@
-import { useEffect, useState, } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "../app/globals.css";
 
 function ViewArticle() {
-  const [articles, setArticles] = useState([])
+  const [articles, setArticles] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3001/getArticles')
-    .then(articles => setArticles(articles.data))
-    .catch(err => console.log(err))
-  }, [])
+    axios
+      .get("http://localhost:3001/getArticles")
+      .then((articles) => setArticles(articles.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-      <div className = "w-100 vh-100 d-flex justify-content-center align-items-center">
-        <div className = "w-100">
-        <table className = "table">
+    <div className="view-article-container">
+      <div className="view-article-content">
+      {/* <Link to="/">Go Back to Main</Link> */}
+        <table className="table">
           <thead>
             <tr>
-              <th>
-                Title
-              </th>
-              <th>
-                Authors
-              </th>
-              <th>
-                Source
-              </th>
-              <th>
-                Publication Year
-              </th>
-              <th>
-                DOI
-              </th>
-              <th>
-                Claim
-              </th>
-              <th>
-                Evidence
-              </th>
+              <th>Title</th>
+              <th>Authors</th>
+              <th>Source</th>
+              <th>Publication Year</th>
+              <th>DOI</th>
+              <th>Claim</th>
+              <th>Evidence</th>
             </tr>
           </thead>
           <tbody>
-            {
-              articles.map(articles => {
-                return <tr>
-                  <td>{articles.title}</td>
-                  <td>{articles.authors}</td>
-                  <td>{articles.source}</td>
-                  <td>{articles.pubyear}</td>
-                  <td>{articles.doi}</td>
-                  <td>{articles.claim}</td>
-                  <td>{articles.evidence}</td>
+            {articles.map((articles) => {
+              return (
+                <tr>
+                  <td className="black-text">{articles.title}</td>
+                  <td className="black-text">{articles.authors}</td>
+                  <td className="black-text">{articles.source}</td>
+                  <td className="black-text">{articles.pubyear}</td>
+                  <td className="black-text">{articles.doi}</td>
+                  <td className="black-text">{articles.claim}</td>
+                  <td className="black-text">{articles.evidence}</td>
                 </tr>
-              })
-            }
+              );
+            })}
           </tbody>
         </table>
-        </div>
       </div>
-
-  )
+    </div>
+  );
 }
 
-export default ViewArticle
+export default ViewArticle;

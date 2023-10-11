@@ -1,18 +1,19 @@
 // components/NavBar.js
 
 import Link from 'next/link';
+import styles from './NavBar.module.css';
 
 function NavBar() {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className={styles.nav}>
+      <ul className={styles.navList}>
+        <li className={styles.navItem}>
           <Link href="/">Home</Link>
         </li>
-        <li>
+        <li className={styles.navItem}>
           <Link href="/SubmitArticle">Submit Article</Link>
         </li>
-        <li>
+        <li className={styles.navItem}>
           <Link href="/ViewArticle">View Articles</Link>
         </li>
       </ul>

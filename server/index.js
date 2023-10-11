@@ -1,20 +1,30 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const UserModel = require('./models/User')
 const ArticleModel = require('./models/Article')
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-
 mongoose.connect("mongodb+srv://hughmagallanes77:easypassword@cluster0.ju9auvm.mongodb.net/dbtest")
 
-app.get('/getUsers', (req, res) => {
-    UserModel.find()
-    .then(users => res.json(users))
-    .catch(err => res.json(err))
-})
+app.post('/api/insert-data', async (req, res) => {
+    try {
+      // Retrieve data from the request body
+      const data = req.body;
+  
+      // Insert the data into MongoDB
+      const result = await ArticleModel.create(data);
+  
+      // Respond with a success message or the inserted data
+      res.json({ message: 'Data inserted successfully', data: result });
+    } catch (error) {
+      // Handle errors
+      console.error('Error inserting data:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
 
 app.get('/getArticles', (req, res) => {
     ArticleModel.find()
