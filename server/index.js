@@ -8,7 +8,13 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://hughmagallanes77:easypassword@cluster0.ju9auvm.mongodb.net/dbtest")
+mongoose.connect("mongodb+srv://hughmagallanes77:easypassword@cluster0.ju9auvm.mongodb.net/dbtest", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    ssl: true,
+    sslValidate: true
+});
+
 
 app.get('/getUsers', (req, res) => {
     UserModel.find()
