@@ -1,0 +1,26 @@
+/* Home.module.css */
+.linkContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .link {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 10px 0;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .link:hover {
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+  }
+  

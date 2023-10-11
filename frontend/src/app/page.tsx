@@ -1,10 +1,13 @@
-// pages/index.js
-import NavBar from '../NavBar';
+import Link from 'next/link';
+import "./mainmenu.css";
 
 function Home() {
   return (
     <div>
-      <NavBar /> {/* Include the navigation component */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <Link href="/SubmitArticle">Go to Submit Article</Link>
+        <Link href="/ViewArticle">Go to View Articles</Link>
+      </div>
     </div>
   );
 }

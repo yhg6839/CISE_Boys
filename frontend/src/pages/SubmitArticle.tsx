@@ -21,15 +21,18 @@ function DataForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/api/insert-data", {
-        title: formData.title,
-        authors: formData.authors,
-        source: formData.source,
-        pubyear: formData.pubyear,
-        doi: formData.doi,
-        claim: "", // If 'claim' and 'evidence' are required fields, provide appropriate values.
-        evidence: "",
-      });
+      const response = await axios.post(
+        "http://localhost:3001/api/insert-data",
+        {
+          title: formData.title,
+          authors: formData.authors,
+          source: formData.source,
+          pubyear: formData.pubyear,
+          doi: formData.doi,
+          claim: "", // If 'claim' and 'evidence' are required fields, provide appropriate values.
+          evidence: "",
+        }
+      );
       console.log("Data inserted:", response.data);
     } catch (error) {
       console.error("Error inserting data:", error);
@@ -100,6 +103,9 @@ function DataForm() {
 
         <button type="submit">Submit</button>
       </form>
+      <a href="../" className="button-link">
+        Go Back to Main Menu
+      </a>
     </div>
   );
 }

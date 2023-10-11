@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-start-rgb)); /* Set background color */
+  background-color: black
 }
 
 /* Add this CSS to your stylesheet, or create a separate CSS file */

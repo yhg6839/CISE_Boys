@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "../app/globals.css";
+import "../app/viewarticle.css";
 
 function ViewArticle() {
   const [articles, setArticles] = useState([]);
@@ -45,6 +45,9 @@ function ViewArticle() {
           </tbody>
         </table>
       </div>
+      <a href="../" className="button-link">
+        Go Back to Main Menu
+      </a>
     </div>
   );
 }

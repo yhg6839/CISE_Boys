@@ -1,0 +1,73 @@
+/* ViewArticle.css (Dark Theme) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Dark background color */
+  color: #fff; /* Text color */
+  margin: 0;
+  padding: 0;
+}
+
+.view-article-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.view-article-content {
+  background-color: #333; /* Dark background color */
+  padding: 20px;
+  border: 1px solid #444; /* Dark border color */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #444; /* Table borders */
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #222; /* Table header background color */
+}
+
+th, td {
+  color: #fff; /* Table text color */
+}
+
+th a {
+  color: #007bff; /* Header links color */
+  text-decoration: none;
+}
+
+th a:hover {
+  text-decoration: underline;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Button color */
+  color: #fff; /* Text color */
+  text-decoration: none; /* Remove underline */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px; /* Adjust spacing from table */
+}
+
+.button-link:hover {
+  background-color: #0056b3; /* Button color on hover */
+}
