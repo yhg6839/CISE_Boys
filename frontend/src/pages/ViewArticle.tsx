@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState, } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
-function App() {
+function ViewArticle() {
   const [articles, setArticles] = useState([])
   useEffect(() => {
     axios.get('http://localhost:3001/getArticles')
@@ -62,4 +61,4 @@ function App() {
   )
 }
 
-export default App
+export default ViewArticle
