@@ -5,7 +5,7 @@ import "../app/submitarticle.css";
 function DataForm() {
   const [formData, setFormData] = useState({
     title: "",
-    authors: [""],
+    authors: "",
     source: "",
     pubyear: "",
     doi: "",
@@ -21,28 +21,19 @@ function DataForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/api/insert-data", formData);
+      const response = await axios.post("http://localhost:3001/api/insert-data", {
+        title: formData.title,
+        authors: formData.authors,
+        source: formData.source,
+        pubyear: formData.pubyear,
+        doi: formData.doi,
+        claim: "", // If 'claim' and 'evidence' are required fields, provide appropriate values.
+        evidence: "",
+      });
       console.log("Data inserted:", response.data);
     } catch (error) {
       console.error("Error inserting data:", error);
     }
-  };
-
-  // Functions to handle authors
-  const addAuthor = () => {
-    setFormData({ ...formData, authors: [...formData.authors, ""] });
-  };
-
-  const changeAuthor = (index, value) => {
-    const updatedAuthors = [...formData.authors];
-    updatedAuthors[index] = value;
-    setFormData({ ...formData, authors: updatedAuthors });
-  };
-
-  const removeAuthor = (index) => {
-    const updatedAuthors = [...formData.authors];
-    updatedAuthors.splice(index, 1);
-    setFormData({ ...formData, authors: updatedAuthors });
   };
 
   return (
@@ -59,32 +50,15 @@ function DataForm() {
           required
         />
 
-        <label>Authors:</label>
-        {formData.authors.map((author, index) => (
-          <div key={`author-${index}`}>
-            <input
-              type="text"
-              name={`authors`}
-              value={author}
-              onChange={(e) => changeAuthor(index, e.target.value)}
-              required
-            />
-            <button
-              onClick={() => removeAuthor(index)}
-              style={{ marginLeft: "3rem" }}
-              type="button"
-            >
-              -
-            </button>
-          </div>
-        ))}
-        <button
-          onClick={addAuthor}
-          style={{ marginLeft: "auto" }}
-          type="button"
-        >
-          +
-        </button>
+        <label htmlFor="authors">Authors:</label>
+        <input
+          type="text"
+          name="authors"
+          id="authors"
+          value={formData.authors}
+          onChange={handleChange}
+          required
+        />
 
         <label htmlFor="source">Source:</label>
         <input
