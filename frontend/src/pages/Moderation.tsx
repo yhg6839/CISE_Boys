@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../app/moderation.css";
 
@@ -6,24 +6,22 @@ function Moderation() {
     const [searchTerm, setSearchTerm] = useState("");
     const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get("http://localhost:3001/api/insert-data", {
-                    params: {
-                        searchTerm: searchTerm,
-                    },
-                });
-                setResults(response.data);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        if (searchTerm) {
-            fetchData();
+    const fetchData = async () => {
+        try {
+            const response = await axios.get("http://localhost:3001/api/insert-data", {
+                params: {
+                    searchTerm: searchTerm,
+                },
+            });
+            setResults(response.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
         }
-    }, [searchTerm]);
+    };
+
+    const handleSearch = async () => {
+        fetchData();
+    };
 
     return (
         <div className="container">
@@ -35,6 +33,7 @@ function Moderation() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                <button onClick={handleSearch}>Search</button>
             </div>
             <ul className="results-list">
                 {results.map((result) => (
