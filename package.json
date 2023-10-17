@@ -1,0 +1,41 @@
+{
+  "name": "software_practice_empirical_evidence_database",
+  "version": "1.0.0",
+  "description": "ENSE701_Stream51_Group1_Assignment1B",
+  "main": "index.js",
+  "engines": {
+    "node": "16.16.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "build": "cd Frontend && npm run build",
+    "app": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MJxx0917/ENSE701_Assignment1B_Stream5_Group11.git"
+  },
+  "author": "Ziyi Zhang, Wenxi Qiao, Wei Qu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MJxx0917/ENSE701_Assignment1B_Stream5_Group11/issues"
+  },
+  "homepage": "https://github.com/MJxx0917/ENSE701_Assignment1B_Stream5_Group11/edit/main/README.md",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "config": "^3.3.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.15",
+    "validation": "0.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-react-app": "^7.0.1",
+    "nodemon": "^1.19.1"
+  },
+  "keywords": []
+}
