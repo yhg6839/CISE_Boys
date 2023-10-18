@@ -177,7 +177,7 @@ class SubmitArticle extends Component {
                   <input //Year
                     type='number'
                     placeholder='Year of public'
-                    name='ypub'
+                    name='pubyear'
                     className='form-control'
                     value={this.state.pubyear}
                     onChange={this.onChange}
@@ -211,7 +211,7 @@ class SubmitArticle extends Component {
                     onChange={this.onChange}
                   />
                   <div style = {{color: 'red'}}>
-                    {this.state.volumeError}
+                    {this.state.claimError}
                   </div>
                 </div>
 
@@ -219,7 +219,7 @@ class SubmitArticle extends Component {
                   <input //Evidence
                     type='text'
                     placeholder='Evidence'
-                    name='evi'
+                    name='evidence'
                     className='form-control'
                     value={this.state.evidence}
                     onChange={this.onChange}
