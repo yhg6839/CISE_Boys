@@ -42,13 +42,12 @@ class ShowArticleDetails extends Component {
     const data = {
       title: this.state.title,
       author: this.state.author,
-      year_of_pub: this.state.year_of_pub,
-      journal_name: this.state.journal_name,
-      volume_number: this.state.volume_number,
+      source: this.state.source,
+      pubyear: this.state.pubyear,
       doi: this.state.doi,
-      process_status: "PendingAnalyst",
-      article_text: this.state.article_text,
-      keywords: this.state.keywords
+      claim: this.state.claim,
+      evidence: this.state.evidence,
+      process_status: "PendingAnalyst"
     };
 
     axios
@@ -76,20 +75,24 @@ class ShowArticleDetails extends Component {
             <td>{ article.author }</td>
           </tr>
           <tr>
-            <th scope="row">Year of Pub</th>
-            <td>{ article.year_of_pub }</td>
+            <th scope="row">Source</th>
+            <td>{ article.source }</td>
           </tr>
           <tr>
-            <th scope="row">Journal Name</th>
-            <td>{ article.journal_name }</td>
-          </tr>
-          <tr>
-            <th scope="row">Vol. Number</th>
-            <td>{ article.volume_number }</td>
+            <th scope="row">Pub Year</th>
+            <td>{ article.pubyear }</td>
           </tr>
           <tr>
             <th scope="row">DOI</th>
             <td>{ article.doi }</td>
+          </tr>
+          <tr>
+            <th scope="row">Claim</th>
+            <td>{ article.claim }</td>
+          </tr>
+          <tr>
+            <th scope="row">Evidence</th>
+            <td>{ article.evidence }</td>
           </tr>
         </tbody>
       </table>

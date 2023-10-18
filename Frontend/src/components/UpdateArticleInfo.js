@@ -9,14 +9,12 @@ class UpdateArticleInfo extends Component {
     this.state = {
         title:'',
         author:'',
-        year_of_pub:'',
-        journal_name:'',
-        volume_number:'',
+        source:'',
+        pubyear:'',
         doi:'',
-        process_status:'',
-        article_text:'',
-        keywords:'',
-        Analysis: ''
+        claim:'',
+        evidence:'',
+        process_status:''
     };
   }
 

@@ -32,9 +32,9 @@ class ArticleResult extends Component {
       [
       <th key={"title"}>{"Title"}</th>,
       <th key={"author"}>{"Author"}</th>,
+      <th key={"source"}>{"Source"}</th>,
       <th key={"year"}>{"Year"}</th>,
-      <th key={"journal"}>{"Journal Name"}</th>,
-      <th key={"volume"}>{"Volume No."}</th>]
+      <th key={"claim"}>{"Claim"}</th>]
     )}
 
     renderTableData()
@@ -46,14 +46,14 @@ class ArticleResult extends Component {
         console.log("No Articles Found");
       } else {
         return articles.map((article, k) => {
-          const { _id, title, author, year_of_pub, journal_name, volume_number } = article
+          const { title, author, source, pubyear, claim, evidence } = article
           return (
              <tr key={title}>
-                <td><Link to={{pathname: `/search-article/${_id}`, state: { prevPath: window.location.pathname, inputQuery: query }}}>{title}</Link></td> {/* Linked to view article text */}
+                <td><Link to={{state: { prevPath: window.location.pathname, inputQuery: query }}}>{title}</Link></td> {/* Linked to view article text */}
                 <td>{author}</td>
-                <td>{year_of_pub}</td>
-                <td>{journal_name}</td>
-                <td>{volume_number}</td>
+                <td>{source}</td>
+                <td>{pubyear}</td>
+                <td>{claim}</td>
              </tr>
           )
        }) 

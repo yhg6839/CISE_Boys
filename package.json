@@ -1,7 +1,7 @@
 {
-  "name": "software_practice_empirical_evidence_database",
+  "name": "SPEED",
   "version": "1.0.0",
-  "description": "ENSE701_Stream51_Group1_Assignment1B",
+  "description": "ggg",
   "main": "index.js",
   "engines": {
     "node": "v20.2.0"
@@ -13,10 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MJxx0917/ENSE701_Assignment1B_Stream5_Group11.git"
-  },
+  
   "author": "Ziyi Zhang, Wenxi Qiao, Wei Qu",
   "license": "ISC",
   "bugs": {

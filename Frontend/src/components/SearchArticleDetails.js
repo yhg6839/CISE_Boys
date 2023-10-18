@@ -39,24 +39,24 @@ class SearchArticleDetails extends Component {
             <td>{ article.author }</td>
           </tr>
           <tr>
-            <th scope="row">Year of Pub</th>
-            <td>{ article.year_of_pub }</td>
+            <th scope="row">Source</th>
+            <td>{ article.source }</td>
           </tr>
           <tr>
-            <th scope="row">Journal Name</th>
-            <td>{ article.journal_name }</td>
-          </tr>
-          <tr>
-            <th scope="row">Vol. Number</th>
-            <td>{ article.volume_number }</td>
+            <th scope="row">Pub Year</th>
+            <td>{ article.pubyear }</td>
           </tr>
           <tr>
             <th scope="row">DOI</th>
             <td>{ article.doi }</td>
           </tr>
           <tr>
-            <th scope="row">Article</th>
-            <td>{ article.article_text }</td>
+            <th scope="row">claim</th>
+            <td>{ article.claim }</td>
+          </tr>
+          <tr>
+            <th scope="row">Evidence</th>
+            <td>{ article.evidence }</td>
           </tr>
         </tbody>
       </table>

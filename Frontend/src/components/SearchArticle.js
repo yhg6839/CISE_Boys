@@ -6,12 +6,13 @@ class SearchArticle extends Component {
   constructor() {
     super();
     this.state = {
-      search:'',
       title:'',
       author:'',
+      source:'',
       year:'',
-      journal_name:'',
-      searchError: ''
+      doi:'',
+      claim:'',
+      evidence:'',
     };
   }
 
@@ -25,14 +26,6 @@ class SearchArticle extends Component {
     const query = {};
 
     //if else statement to handle nulls and change them into empty strings to code doesn't break
-    if(this.state.search == null)
-    {
-      query.keywords = "";
-    }
-    else
-    {
-      query.keywords = this.state.search;
-    }
     if(this.state.title == null)
     {
       query.title = "";
@@ -49,21 +42,21 @@ class SearchArticle extends Component {
     {
       query.author = this.state.author;
     }
-    if(this.state.year == null)
+    if(this.state.source == null)
     {
-      query.year = "";
+      query.source = "";
     }
     else
     {
-      query.year = this.state.year;
+      query.source = this.state.source;
     }
-    if(this.state.journal_name == null)
+    if(this.state.pubyear == null)
     {
-      query.journal_name = "";
+      query.pubyearyear = "";
     }
     else
     {
-      query.journal_name = this.state.journal_name;
+      query.year = this.state.pubyear;
     }
     this.props.history.push('article-result', query); //sending the search query  
   };
@@ -86,15 +79,6 @@ class SearchArticle extends Component {
           <form noValidate onSubmit={this.onSubmit}>
 
             <div className='form-group'>
-              <input //keywords
-                type='text'
-                name='search'
-                placeholder='Keywords'
-                className='form-control'
-                onChange={this.onChange}
-              />
-
-              <br/>
               <input //title
                 type='text'
                 name='title'
@@ -111,18 +95,19 @@ class SearchArticle extends Component {
                 onChange={this.onChange}
               />
               <br/>
-              <input //year
+              <input //source
                 type='text'
-                name='year'
-                placeholder='Year'
+                name='source'
+                placeholder='Source'
                 className='form-control'
                 onChange={this.onChange}
               />
+              
               <br/>
-              <input //journal name
+              <input //year
                 type='text'
-                name='journal_name'
-                placeholder='Journal Name'
+                name='pubyear'
+                placeholder='PubYear'
                 className='form-control'
                 onChange={this.onChange}
               />

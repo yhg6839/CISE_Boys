@@ -20,7 +20,7 @@ const AnalystCard = (props) => {
                 </div>
                 <h2>{article.title}</h2>
                 <h3>{article.author}</h3>
-                <p>{article.year_of_pub}</p>
+                <p>{article.pubyear}</p>
             </div>
         </div>
     )
