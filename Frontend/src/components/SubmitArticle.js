@@ -9,19 +9,19 @@ class SubmitArticle extends Component {
     this.state = {
       title:'',
       author:'',
-      year_of_pub:'',
-      journal_name:'',
-      volume_number:'',
+      source:'',
+      pubyear:'',
       doi:'',
+      claim:'',
+      evidence:'',
       process_status:'',
-      article_text:'',
-      keywords:'',
       titleError:'',
       authorError:'',
-      yobError:'',
-      journalError:'',
-      volumeError:'',
-      doiError:''
+      sourceError:'',
+      pubyearError:'',
+      doiError:'',
+      claimError:'',
+      evidenceError:''
     };
   }
 
@@ -29,10 +29,11 @@ class SubmitArticle extends Component {
   {
     let titleError = "";
     let authorError = "";
-    let yobError = "";
-    let journalError = "";
-    let volumeError = "";
+    let sourceError = "";
+    let pubyearError = "";
     let doiError = "";
+    let claimError = "";
+    let evidenceError = "";
 
     if(!this.state.title)
     {
@@ -42,27 +43,31 @@ class SubmitArticle extends Component {
     {
       authorError = 'Author cannot be empty!';
     }
-    if(!this.state.year_of_pub)
+    if(!this.state.source)
     {
-      yobError = 'You must type the year of publish!';
+      sourceError = 'Source cannot be empty!';
     }
-    if(!this.state.journal_name)
+    if(!this.state.pubyear)
     {
-      journalError = 'Please enter the journal name!';
-    }
-    if(!this.state.volume_number)
-    {
-      volumeError = 'Volume number is required!';
+      pubyearError = 'Please enter the valid year!';
     }
     if(!this.state.doi)
     {
       doiError = 'DOI must be provided!';
     }
+    if(!this.state.claim)
+    {
+      claimError = 'Claim cannot be empty!';
+    }
+    if(!this.evidence)
+    {
+      evidenceError = 'Evidence cannot be empty!';
+    }
     
 
-    if(titleError || authorError || yobError || journalError || volumeError || doiError)
+    if(titleError || authorError || sourceError || pubyearError || doiError || claimError || evidenceError)
     {
-      this.setState({titleError, authorError, yobError, journalError, volumeError, doiError});
+      this.setState({titleError, authorError, sourceError, pubyearError, doiError, claimError, evidenceError});
       return false;
     }
 
@@ -85,28 +90,25 @@ class SubmitArticle extends Component {
     const data = {
       title: this.state.title,
       author: this.state.author,
-      year_of_pub: this.state.year_of_pub,
-      journal_name: this.state.journal_name,
-      volume_number: this.state.volume_number,
+      source: this.state.source,
+      pubyear: this.state.pubyear,
       doi: this.state.doi,
-      process_status: "PendingModeration",
-      article_text: this.state.article_text,
-      keywords: this.state.keywords
+      claim: this.state.claim,
+      evidence: this.state.evidence,
+      process_status: "PendingModeration"
     };
 
     axios
       .post('http://localhost:8082/api/articles', data) //send data to database then empty form details
       .then(res => {
         this.setState({
-          title:'',
-          author:'',
-          year_of_pub:'',
-          journal_name:'',
-          volume_number:'',
-          doi:'',
-          process_status:'',
-          article_text:'',
-          keywords:''
+          title: '',
+          authors: '',
+          source: '',
+          pubyear: '',
+          doi: '',
+          claim: '',
+          evidence: '',
         })
         this.props.history.push('/');
       })
@@ -158,44 +160,30 @@ class SubmitArticle extends Component {
                 </div>
 
                 <div className='form-group'>
-                  <input //Year of Publication
-                    type='number'
-                    placeholder='Year of Publication'
-                    name='year_of_pub'
-                    className='form-control'
-                    value={this.state.year_of_pub}
-                    onChange={this.onChange}
-                  />
-                  <div style = {{color: 'red'}}>
-                    {this.state.yobError}
-                  </div>
-                </div>
-
-                <div className='form-group'>
-                  <input //Journal Name
+                  <input //Source
                     type='text'
-                    placeholder='Journal Name'
-                    name='journal_name'
+                    placeholder='Source'
+                    name='source'
                     className='form-control'
-                    value={this.state.journal_name}
+                    value={this.state.source}
                     onChange={this.onChange}
                   />
                   <div style = {{color: 'red'}}>
-                    {this.state.journalError}
+                    {this.state.sourceError}
                   </div>
                 </div>
 
                 <div className='form-group'>
-                  <input //Volume Number
+                  <input //Year
                     type='number'
-                    placeholder='Volume Number'
-                    name='volume_number'
+                    placeholder='Year of public'
+                    name='ypub'
                     className='form-control'
-                    value={this.state.volume_number}
+                    value={this.state.pubyear}
                     onChange={this.onChange}
                   />
                   <div style = {{color: 'red'}}>
-                    {this.state.volumeError}
+                    {this.state.pubyearError}
                   </div>
                 </div>
                 
@@ -212,6 +200,35 @@ class SubmitArticle extends Component {
                     {this.state.doiError}
                   </div>
                 </div>
+
+                <div className='form-group'>
+                  <input //claim
+                    type='text'
+                    placeholder='Claim'
+                    name='claim'
+                    className='form-control'
+                    value={this.state.claim}
+                    onChange={this.onChange}
+                  />
+                  <div style = {{color: 'red'}}>
+                    {this.state.volumeError}
+                  </div>
+                </div>
+
+                <div className='form-group'>
+                  <input //Evidence
+                    type='text'
+                    placeholder='Evidence'
+                    name='evi'
+                    className='form-control'
+                    value={this.state.evidence}
+                    onChange={this.onChange}
+                  />
+                  <div style = {{color: 'red'}}>
+                    {this.state.evidenceError}
+                  </div>
+                </div>
+
                 <input //Submit button
                     type="submit"
                     className="btn btn-primary"

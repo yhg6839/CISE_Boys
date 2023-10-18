@@ -4,7 +4,7 @@
   "description": "ENSE701_Stream51_Group1_Assignment1B",
   "main": "index.js",
   "engines": {
-    "node": "16.16.0"
+    "node": "v20.2.0"
   },
   "scripts": {
     "start": "node app.js",
@@ -34,8 +34,11 @@
     "validation": "0.0.1"
   },
   "devDependencies": {
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
     "eslint-config-react-app": "^7.0.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
   },
   "keywords": []
 }
