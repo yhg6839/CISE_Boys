@@ -1,0 +1,49 @@
+.ShowArticleList {
+  background-color: #f7f9fc;  /* 淡灰色背景 */
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  min-width: 100px;
+  color: #333;  /* 深灰文本色 */
+  padding-bottom: 40px;
+}
+
+.container {
+  max-width: 1200px;  /* 调整容器宽度以适应大屏幕 */
+}
+
+.display-4.text-center {
+  color: #2c3e50;  /* 深蓝色标题 */
+  border-bottom: 2px solid #3498db;  /* 添加标题下的蓝色边线 */
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;  /* 允许卡片在较小的屏幕上换行 */
+  justify-content: center;  /* 将卡片居中 */
+  gap: 20px;  /* 在卡片之间添加间隔 */
+}
+
+.rowC {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.btn {
+  background-color: #3498db;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+  color: white;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}

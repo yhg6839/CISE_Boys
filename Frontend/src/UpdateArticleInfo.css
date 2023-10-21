@@ -1,0 +1,77 @@
+.article-update-section {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f9fc;
+  min-height: 100vh;
+  padding: 40px;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.question-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: #3498db;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.confirm-btn, .decline-btn, .back-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-btn {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.decline-btn {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.back-btn {
+  background-color: #95a5a6;
+  color: #fff;
+}
+
+.confirm-btn:hover {
+  background-color: #219f55;
+}
+
+.decline-btn:hover {
+  background-color: #d62c19;
+}
+
+.back-btn:hover {
+  background-color: #7e8c8d;
+}

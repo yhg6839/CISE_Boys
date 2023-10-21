@@ -1,0 +1,43 @@
+.card-container {
+  width: 280px;
+  border: none;
+  margin: 20px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #2f3640;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.card-container:hover {
+  transform: scale(1.03);
+}
+
+.card-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 3px solid #e84393;
+}
+
+.desc {
+  padding: 15px;
+  color: #dcdde1;  
+}
+
+.desc h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-size: 1.4em;
+  color: #f5f6fa;  
+}
+
+.desc h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.desc p {
+  font-size: 1em;
+  font-style: italic;  
+}
