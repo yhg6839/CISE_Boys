@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../SearchArticle.css';
 
 class SearchArticle extends Component {
   constructor() {
     super();
     this.state = {
+      search:'',
       title:'',
       author:'',
-      source:'',
       year:'',
-      doi:'',
-      claim:'',
-      evidence:'',
+      journal_name:'',
+      searchError: ''
     };
   }
 
@@ -20,12 +19,18 @@ class SearchArticle extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  //Search submit onClick event
   onSubmit = e => {
     e.preventDefault();    
     const query = {};
 
-    //if else statement to handle nulls and change them into empty strings to code doesn't break
+    if(this.state.search == null)
+    {
+      query.keywords = "";
+    }
+    else
+    {
+      query.keywords = this.state.search;
+    }
     if(this.state.title == null)
     {
       query.title = "";
@@ -42,21 +47,21 @@ class SearchArticle extends Component {
     {
       query.author = this.state.author;
     }
-    if(this.state.source == null)
+    if(this.state.year == null)
     {
-      query.source = "";
+      query.year = "";
     }
     else
     {
-      query.source = this.state.source;
+      query.year = this.state.year;
     }
-    if(this.state.pubyear == null)
+    if(this.state.journal_name == null)
     {
-      query.pubyearyear = "";
+      query.journal_name = "";
     }
     else
     {
-      query.year = this.state.pubyear;
+      query.journal_name = this.state.journal_name;
     }
     this.props.history.push('article-result', query); //sending the search query  
   };
@@ -65,67 +70,46 @@ class SearchArticle extends Component {
     return (
       <div className="SearchArticle">
         <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-            </div>
-            <div className="col-md-8 m-auto">
-              <br/>
-              <h1 className="display-4 text-center">Search for an Article</h1>
-              <br/>
+          <div className="row justify-content-center"> {/* Centered content */}
+            <div className="col-md-8 text-center">
+              <h1>Search for an Article</h1>
             </div>
           </div>
-          <br/>
-          <div className="col-md-8 m-auto">
-          <form noValidate onSubmit={this.onSubmit}>
+          
+          <div className="row justify-content-center"> {/* Centered content */}
+            <div className="col-md-8">
+              <form noValidate onSubmit={this.onSubmit}>
+                <div className='form-group'>
+                  {/* Using array of inputs to minimize repetition */}
+                  {['search', 'title', 'author', 'year', 'journal_name'].map((name, index) => (
+                    <div key={index}>
+                      <input
+                        type='text'
+                        name={name}
+                        placeholder={name.charAt(0).toUpperCase() + name.slice(1)} // Capitalize the first letter
+                        className='form-control'
+                        onChange={this.onChange}
+                      />
+                      <br/>
+                    </div>
+                  ))}
+                </div>
 
-            <div className='form-group'>
-              <input //title
-                type='text'
-                name='title'
-                placeholder='Title'
-                className='form-control'
-                onChange={this.onChange}
-              />
+                <div className="text-center"> {/* Centered button */}
+                  <button type="submit" className="btn btn-primary">
+                    Search
+                  </button>
+                </div>
+              </form>
               <br/>
-              <input //author
-                type='text'
-                name='author'
-                placeholder='Author'
-                className='form-control'
-                onChange={this.onChange}
-              />
+
+              <div className="text-center"> {/* Centered button */}
+                <Link to="/main-menu-user" className="btn btn-outline-warning">
+                  Return to Menu for User
+                </Link>
+              </div>
               <br/>
-              <input //source
-                type='text'
-                name='source'
-                placeholder='Source'
-                className='form-control'
-                onChange={this.onChange}
-              />
-              
-              <br/>
-              <input //year
-                type='text'
-                name='pubyear'
-                placeholder='PubYear'
-                className='form-control'
-                onChange={this.onChange}
-              />
             </div>
-
-            <input //submission button
-                type="submit"
-                className="btn btn-primary"
-                onClick = { this.onSubmit }
-            />
-            </form>
-            <br/>
-            <div className="rowC">
-            <Link to="/main-menu-user" className="btn btn-outline-warning">
-                Return to Menu for User
-            </Link>
-          </div>
-          <br/>
           </div>
         </div>
       </div>

@@ -1,0 +1,48 @@
+.ShowArticleDetails {
+  background-color: #f2f2f2; /* Lighter background color */
+  min-height: 100vh;
+  color: #333;
+  padding: 2rem 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.back-btn {
+  background: #eeeeee;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  margin-bottom: 2rem;
+  display: inline-block;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+  background-color: #ddd;
+  text-decoration: none;
+}
+
+.article-detail-card {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.article-detail-item {
+  margin-bottom: 1.5rem;
+}
+
+.article-detail-item h3 {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.article-detail-item p {
+  font-size: 1rem;
+  color: #555;
+}

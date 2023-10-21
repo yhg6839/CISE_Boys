@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../Analyst.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import AnalystCard from './AnalystCard';
@@ -14,7 +14,7 @@ class Analyst extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/articles/PendingAnalyst') //Get all the articles that are pending analysis
+      .get('http://localhost:3006/api/articles/PendingAnalyst')
       .then(res => {
         this.setState({
           articles: res.data
@@ -38,7 +38,6 @@ class Analyst extends Component {
       );
     }
 
-    //layout of analysis page
     return (
       <div className="ShowArticleList">
         <div className="container">

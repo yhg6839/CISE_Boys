@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../ShowApprovedArticles.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ApprovedArticleCard from './ApprovedArticleCard';
@@ -14,7 +14,7 @@ class ShowApprovedArticles extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/articles/Live/') //Get all articles pending moderation
+      .get('http://localhost:3006/api/articles/Live/')
       .then(res => {
         this.setState({
           articles: res.data
@@ -30,8 +30,8 @@ class ShowApprovedArticles extends Component {
     const articles = this.state.articles;
     let articleList;
 
-    if(!articles) {
-      articleList = "there is no article record!";
+    if(!articles || articles.length === 0) {
+      articleList = <p className="no-article-msg">There is no article record!</p>;
     } else {
       articleList = articles.map((article, k) =>
         <ApprovedArticleCard article={article} key={k} />
@@ -42,22 +42,18 @@ class ShowApprovedArticles extends Component {
       <div className="ShowArticleList">
         <div className="container">
           <div className="row">
-            <div className="col-md-12">
-              <br />
-              <h2 className="display-4 text-center">Approved Articles</h2>
-              <br/>
+            <div className="col-md-12 text-center">
+              <h2>Approved Articles</h2>
             </div>
           </div>
-          <br/>
-
-          <div className="list">
-                {articleList} 
+          <div className="list mt-5">
+            {articleList}
           </div>
-          <div className="rowC">
-                <Link to="/main-menu-user" className="btn btn-outline-warning">
-                  Return to Menu for User
-                </Link>
-            </div>
+          <div className="row justify-content-center mt-5">
+            <Link to="/main-menu-user" className="btn return-btn">
+              Return to Menu for User
+            </Link>
+          </div>
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../ShowArticleList.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ArticleCard from './ArticleCard';
@@ -14,7 +14,7 @@ class ShowArticleList extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/articles/PendingModeration/') //Get all articles pending moderation
+      .get('http://localhost:3006/api/articles/PendingModeration/')
       .then(res => {
         this.setState({
           articles: res.data
@@ -30,8 +30,8 @@ class ShowArticleList extends Component {
     const articles = this.state.articles;
     let articleList;
 
-    if(!articles) {
-      articleList = "there is no article record!";
+    if(!articles || articles.length === 0) {
+      articleList = <p>There is no article record!</p>;
     } else {
       articleList = articles.map((article, k) =>
         <ArticleCard article={article} key={k} />
@@ -39,26 +39,18 @@ class ShowArticleList extends Component {
     }
 
     return (
-      <div className="ShowArticleList">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <br />
-              <h2 className="display-4 text-center">Moderator Page</h2>
-              <br/>
-            </div>
-          </div>
-          <br/>
-
-          <div className="list">
-                {articleList} 
-          </div>
-          <div className="rowC">
-                <Link to="/mainmenu" className="btn btn-outline-warning">
-                  Return to Menu for Administrator
-                </Link>
-            </div>
-        </div>
+      <div className="moderator-page">
+        <header className="mod-header">
+            <h2>Moderator Page</h2>
+        </header>
+        <main className="mod-content">
+            {articleList} 
+        </main>
+        <footer className="mod-footer">
+            <Link to="/mainmenu" className="btn-back">
+                Return to Menu for Administrator
+            </Link>
+        </footer>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../ArticleResult.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ class ArticleResult extends Component {
     const query = this.props.location.state;
 
     axios
-      .post('http://localhost:8082/api/articles/search', query) //get all the articles that match the query parameters
+      .post('http://localhost:3006/api/articles/search', query)
       .then(res => {
         this.setState({
           articles: res.data
@@ -32,9 +32,9 @@ class ArticleResult extends Component {
       [
       <th key={"title"}>{"Title"}</th>,
       <th key={"author"}>{"Author"}</th>,
-      <th key={"source"}>{"Source"}</th>,
       <th key={"year"}>{"Year"}</th>,
-      <th key={"claim"}>{"Claim"}</th>]
+      <th key={"journal"}>{"Journal Name"}</th>,
+      <th key={"volume"}>{"Volume No."}</th>]
     )}
 
     renderTableData()
@@ -46,14 +46,14 @@ class ArticleResult extends Component {
         console.log("No Articles Found");
       } else {
         return articles.map((article, k) => {
-          const { title, author, source, pubyear, claim, evidence } = article
+          const { _id, title, author, year_of_pub, journal_name, volume_number } = article
           return (
              <tr key={title}>
-                <td><Link to={{state: { prevPath: window.location.pathname, inputQuery: query }}}>{title}</Link></td> {/* Linked to view article text */}
+                <td><Link to={{pathname: `/search-article/${_id}`, state: { prevPath: window.location.pathname, inputQuery: query }}}>{title}</Link></td> {/* Linked to view article text */}
                 <td>{author}</td>
-                <td>{source}</td>
-                <td>{pubyear}</td>
-                <td>{claim}</td>
+                <td>{year_of_pub}</td>
+                <td>{journal_name}</td>
+                <td>{volume_number}</td>
              </tr>
           )
        }) 

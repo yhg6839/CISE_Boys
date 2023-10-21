@@ -1,0 +1,43 @@
+.SearchArticle {
+  background-color: #f4f4f4;
+  height: 100vh;
+  color: #333;
+  padding: 50px 0;
+  font-family: Arial, sans-serif;
+}
+
+.SearchArticle h1 {
+  color: #2C3E50;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+}
+
+.SearchArticle .form-control {
+  border-radius: 0;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+}
+
+.SearchArticle .btn {
+  border-radius: 0;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+.SearchArticle .btn-primary {
+  background-color: #2C3E50;
+  border: none;
+  color: #fff;
+}
+
+.SearchArticle .btn-outline-warning {
+  border-color: #E74C3C;
+  color: #E74C3C;
+}
+
+.SearchArticle .btn-outline-warning:hover {
+  background-color: #E74C3C;
+  color: #fff;
+}
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../SearchArticleDetails.css';
 import axios from 'axios';
 
 class SearchArticleDetails extends Component {
@@ -13,7 +13,7 @@ class SearchArticleDetails extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:8082/api/articles/article/'+this.props.match.params.id) //get the article details of a single article
+      .get('http://localhost:3006/api/articles/article/'+this.props.match.params.id)
       .then(res => {
         this.setState({
           article: res.data
@@ -25,65 +25,50 @@ class SearchArticleDetails extends Component {
   };
 
   render() {
-    //Display the information in a table format
     const article = this.state.article;
-    let ArticleItem = <div>
-      <table className="table table-hover table-dark">
-        <tbody>
-          <tr>
-            <th scope="row">Title</th>
-            <td>{ article.title }</td>
-          </tr>
-          <tr>
-            <th scope="row">Author</th>
-            <td>{ article.author }</td>
-          </tr>
-          <tr>
-            <th scope="row">Source</th>
-            <td>{ article.source }</td>
-          </tr>
-          <tr>
-            <th scope="row">Pub Year</th>
-            <td>{ article.pubyear }</td>
-          </tr>
-          <tr>
-            <th scope="row">DOI</th>
-            <td>{ article.doi }</td>
-          </tr>
-          <tr>
-            <th scope="row">claim</th>
-            <td>{ article.claim }</td>
-          </tr>
-          <tr>
-            <th scope="row">Evidence</th>
-            <td>{ article.evidence }</td>
-          </tr>
-        </tbody>
-      </table>
+    let ArticleItem = 
+    <div className="article-detail-card">
+      <div className="article-detail-item">
+        <h3>Title:</h3>
+        <p>{ article.title }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>Author:</h3>
+        <p>{ article.author }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>Year of Pub:</h3>
+        <p>{ article.year_of_pub }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>Journal Name:</h3>
+        <p>{ article.journal_name }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>Vol. Number:</h3>
+        <p>{ article.volume_number }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>DOI:</h3>
+        <p>{ article.doi }</p>
+      </div>
+      <div className="article-detail-item">
+        <h3>Article:</h3>
+        <p>{ article.article_text }</p>
+      </div>
     </div>
 
     return (
       <div className="ShowArticleDetails">
         <div className="container">
-          <div className="row">
-            <div className="col-md-10 m-auto">
-              <br /> <br />
-              <Link to={{pathname: `${this.props.location.state.prevPath}`, state: this.props.location.state.inputQuery}} className="btn btn-outline-warning float-left">
-                  Return to Menu
-              </Link>
-            </div>
-            <br />
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Software Practice Empirical Evidence Database</h1>
-              <p className="lead text-center">
-                  Viewing Results
-              </p>
-              <hr /> <br />
-            </div>
+          <div className="header">
+            <Link to={{pathname: `${this.props.location.state.prevPath}`, state: this.props.location.state.inputQuery}} className="back-btn">
+              &#8592; Return
+            </Link>
+            <h1>Software Practice Empirical Evidence Database</h1>
+            <p>Viewing Results</p>
           </div>
-          <div>
-            { ArticleItem } {/* Displaying the article details*/}
-          </div>
+          { ArticleItem }
         </div>
       </div>
     );

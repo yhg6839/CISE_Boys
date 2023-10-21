@@ -9,23 +9,26 @@ const ArticleSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  source: {
-    type: String
+  year_of_pub: {
+    type: Number
   },
-  pubyear: {
+  journal_name: {
+    type: String,
+  },
+  volume_number: {
     type: Number,
   },
   doi: {
     type: String,
   },
-  claim: {
-    type: String,
-  },
-  evidence: {
-    type: String,
-  },
   process_status: {
     type: String,
+  },
+  article_text: {
+    type: String,
+  },
+  keywords: {
+    type: String
   }
 });
 
