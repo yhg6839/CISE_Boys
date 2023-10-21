@@ -13,11 +13,8 @@ class MainMenu extends Component {
                 <div className="container">
                     <div className="header">
                         <h1>Main Menu for Administrator</h1>
-                        <p>SERC moderator will check quality and decide whether to accept</p>
                         <Link to="/moderation" className="btn menu-btn">Moderation</Link>
-                        <p>SERC analyst will analyze the uploaded article and decide if it can be passed to the database</p>
                         <Link to="/analyst" className="btn menu-btn">Analysis article</Link>
-                        <p>You can go back to option</p>
                         <Link to="/" className="btn menu-btn">Back to option</Link>
                     </div>
                 </div>
