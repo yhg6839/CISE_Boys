@@ -1,4 +1,33 @@
-// {
-//   "builds": [{ "src": "Frontend/package.json", "use": "@vercel/static-build" }],
-//   "routes": [{ "src": "/.*", "dest": "Frontend/build/index.html" }]
-// }
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000, immutable" },
+      "dest": "/Frontend/build/static/$1"
+    },
+    {
+      "src": "/favicon.ico",
+      "dest": "/Frontend/build/favicon.ico"
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/Frontend/build/manifest.json"
+    },
+    {
+      "src": "/robots.txt",
+      "dest": "/Frontend/build/robots.txt"
+    },
+    {
+      "src": "/.*",
+      "dest": "/Frontend/build/index.html"
+    }
+  ]
+}
