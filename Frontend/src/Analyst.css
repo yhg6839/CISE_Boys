@@ -1,29 +1,29 @@
 .ShowArticleList {
-  background-color: #f7f9fc;  /* 淡灰色背景 */
+  background-color: #f7f9fc;
   height: 100%;
   width: 100%;
   min-height: 100vh;
   min-width: 100px;
-  color: #333;  /* 深灰文本色 */
+  color: #333; 
   padding-bottom: 40px;
 }
 
 .container {
-  max-width: 1200px;  /* 调整容器宽度以适应大屏幕 */
+  max-width: 1200px;
 }
 
 .display-4.text-center {
-  color: #2c3e50;  /* 深蓝色标题 */
-  border-bottom: 2px solid #3498db;  /* 添加标题下的蓝色边线 */
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
 
 .list {
   display: flex;
-  flex-wrap: wrap;  /* 允许卡片在较小的屏幕上换行 */
-  justify-content: center;  /* 将卡片居中 */
-  gap: 20px;  /* 在卡片之间添加间隔 */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; 
 }
 
 .rowC {

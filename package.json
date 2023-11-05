@@ -4,7 +4,7 @@
   "description": "This is a website to manage book.",
   "main": "index.js",
   "engines": {
-    "node": "v18.0.0"
+    "node": "v20.2.0"
   },
   "scripts": {
     "start": "node app.js",
@@ -13,8 +13,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Frontend && npm run build --prefix Frontend"
   },
+  
   "author": "Hugh Mico Magallanes, Gavin Gao, Brayen Pudihang",
   "license": "ISC",
+  "homepage": "https://github.com/yhg6839/CISE_Boys/blob/main/README.md",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -22,7 +24,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
-    "grep": "^0.1.0",
     "mongoose": "^5.5.15",
     "validation": "0.0.1"
   },

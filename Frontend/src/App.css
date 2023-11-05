@@ -97,17 +97,6 @@
   background-color: #0056b3;
 }
 
-
-/* .MainMenu{
-  background-size:cover;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
-  color: rgb(255, 255, 0);
-  padding-bottom: 20px;
-} */
-
 .article-container {
   display: flex;
   flex-direction: column;
@@ -179,33 +168,6 @@
 .btn-submit:hover, .btn-back:hover {
   background: #c0392b;
 }
-
-
-/* .SearchArticle{
-  background-size:cover;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
-  color: rgb(255, 255, 0);
-  padding-bottom: 20px;
-} */
-
-/* .ShowArticleDetails {
-  background-color: #2c3e50;
-  min-height: 100vh;
-  color: white;
-} */
-
-/* .ShowArticleList {
-  background-size:cover;
-  height: 100%;
-  width: 100%;
-  min-height: 100vh;
-  min-width: 100px;
-  color: rgb(255, 255, 0);
-  padding-bottom: 20px;
-} */
 
 .list {
   display: grid;
